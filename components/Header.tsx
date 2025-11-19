@@ -24,7 +24,7 @@ export default function Header() {
     return (
         <HeaderWrapper>
             <Link href="/" >
-                <Title>CS391 URL Shortener</Title>
+                <Title>Kaizia's CS391 URL Shortener</Title>
             </Link>
         </HeaderWrapper>
     );
