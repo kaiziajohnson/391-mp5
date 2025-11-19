@@ -1,16 +1,13 @@
-import {redirect} from "next/navigation";
-import {getUrlByAlias} from "@/lib/urlRepo";
+import { redirect } from "next/navigation";
+import getUrl from "@/lib/getUrl";
 
-interface PageProps {
-    params: {alias: string};
-}
 
-export default async function AliasPage({params}: PageProps) {
-    const doc = await getUrlByAlias(params.alias);
+export default async function RedirectPage(props: { params: Promise<{ alias: string }> }) {
+    const { alias } = await props.params;
 
-    if(!doc) {
-        redirect("/")
-    }
+    const url = await getUrl(alias);
 
-    redirect(doc.url);
+    if (!url) redirect("/");
+
+    redirect(url);
 }
